@@ -31,14 +31,19 @@
         <h2>
 <a id="downloading-the-data-using-s3" class="anchor" href="#downloading-the-data-using-s3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Downloading the Data using S3</h2>
 
-<p>You will need to use AWS CLI and configure it to use your AWS account credentials. 
-Note that you will be charged a small data transfer fee by AWS.</p>
+<p>You can use <a href="https://aws.amazon.com/cli/">AWS CLI</a> or the easier <a href="http://s3tools.org/s3cmd">s3cmd</a> to download the data. 
+  First configure the tool to use your AWS account credentials and then use the appropriate command to download the s3 links listed below.</p>
 
-<p>To download a data file (e.g., stream_tweets_byTimestamp.data) to the current folder, you would do this:</p>
+<p>To download a data file (e.g., stream_tweets_byTimestamp.data) to the current folder, use the following command:</p>
 
-<pre><code>aws s3 cp s3://credbank/stream_tweets_byTimestamp.data .
+<pre><code>aws s3api get-object --request-payer requester --bucket credbank --key stream_tweets_byTimestamp.data stream_tweets_byTimestamp.data
+</code></pre>
+OR
+<pre><code>s3cmd get --requester-pays s3://credbank/stream_tweets_byTimestamp.data
 </code></pre>
 
+<p>Note that you will be charged a small data transfer fee by AWS, which can be offset 
+by their <a href="https://aws.amazon.com/free/">free tier</a>.</p>
 <h2>
 <a id="data-description" class="anchor" href="#data-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Description</h2>
 
